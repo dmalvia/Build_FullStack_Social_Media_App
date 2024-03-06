@@ -31,13 +31,15 @@ const CreatePost: React.FunctionComponent<ICreatePostProps> = (props) => {
     console.log("Uploaded File Entry : ", fileEntry.files);
     console.log("The create post is : ", post);
     const photoMeta: PhotoMeta[] = fileEntry.files.map((file) => {
-      return { cdnUrl: file.cdnUrl, uuid: file.uuid };
+      return { cdnUrl: file.cdnUrl!, uuid: file.uuid! };
     });
     if (user != null) {
       const newPost: Post = {
         ...post,
-        userId: user?.uid || null,
+        userId: user?.uid,
         photos: photoMeta,
+        username: user.displayName!,
+        photoURL: user.photoURL!,
       };
       console.log("The final posy is  : ", newPost);
       await createPost(newPost);
@@ -74,7 +76,11 @@ const CreatePost: React.FunctionComponent<ICreatePostProps> = (props) => {
                 <Label className="mb-4" htmlFor="photo">
                   Photos
                 </Label>
-                <FileUploader fileEntry={fileEntry} onChange={setFileEntry} />
+                <FileUploader
+                  fileEntry={fileEntry}
+                  onChange={setFileEntry}
+                  preview={true}
+                />
               </div>
               <Button className="mt-8 w-32" type="submit">
                 Post
