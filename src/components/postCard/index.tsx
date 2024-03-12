@@ -1,7 +1,6 @@
 import { useUserAuth } from "@/context/userAuthContext";
 import { DocumentResponse } from "@/types";
 import * as React from "react";
-import image2 from "@/assets/images/image2.jpg";
 import {
   Card,
   CardContent,
@@ -23,8 +22,8 @@ const PostCard: React.FunctionComponent<IPostCardProps> = ({ data }) => {
     likes: number;
     isLike: boolean;
   }>({
-    likes: data.likes,
-    isLike: data.userlikes.includes(user?.uid) ? true : false,
+    likes: data.likes!,
+    isLike: data.userlikes?.includes(user!.uid) ? true : false,
   });
 
   const updateLike = async (isVal: boolean) => {

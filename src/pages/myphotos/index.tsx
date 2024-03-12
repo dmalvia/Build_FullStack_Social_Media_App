@@ -43,7 +43,7 @@ const MyPhotos: React.FunctionComponent<IMyPhotosProps> = () => {
   const renderPost = () => {
     return data.map((item) => {
       return (
-        <div key={item.photos[0].uuid} className="relative">
+        <div key={item.id} className="relative">
           <div className="absolute group transition-all duration-200 bg-transparent hover:bg-slate-950 hover:bg-opacity-75 top-0 bottom-0 left-0 right-0 w-full h-full">
             <div className="flex flex-col justify-center items-center w-full h-full">
               <HeartIcon className="hidden group-hover:block fill-white" />

@@ -13,14 +13,11 @@ import {
   updateUserProfile,
 } from "@/repository/user.service";
 import { useUserAuth } from "@/context/userAuthContext";
-import {
-  updateUserInfoOnPosts,
-  updateuserInfoOnPosts,
-} from "@/repository/post.service";
+import { updateUserInfoOnPosts } from "@/repository/post.service";
 
 interface IEditProfileProps {}
 
-const EditProfile: React.FunctionComponent<IEditProfileProps> = (props) => {
+const EditProfile: React.FunctionComponent<IEditProfileProps> = () => {
   const { user, updateProfileInfo } = useUserAuth();
   const location = useLocation();
   const navigate = useNavigate();
